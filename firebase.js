@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBNwrQoGanvwszAfk42dG7g1gBRp8iAaMg",
-  authDomain: "tapwebmobile.firebaseapp.com",
-  projectId: "tapwebmobile",
-  storageBucket: "tapwebmobile.firebasestorage.app",
-  messagingSenderId: "63177880078",
-  appId: "1:63177880078:web:342805778c8cc9dad7025f"
+  apiKey: "AIzaSyDLPXJedD7TjgesP_0qkqwKpW7Gzx30XxQ",
+  authDomain: "vetdemo-dae6b.firebaseapp.com",
+  projectId: "vetdemo-dae6b",
+  storageBucket: "vetdemo-dae6b.firebasestorage.app",
+  messagingSenderId: "511464204060",
+  appId: "1:511464204060:web:3eb8a6cf025c398fcd7cd9"
 };
 
 // Initialize Firebase
