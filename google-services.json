@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "63177880078",
+    "project_id": "tapwebmobile",
+    "storage_bucket": "tapwebmobile.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:63177880078:android:0652faf191b8b987d7025f",
+        "android_client_info": {
+          "package_name": "Vet.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRvU6MvyS--Qld60oHQN-to0JgDaZkm_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
