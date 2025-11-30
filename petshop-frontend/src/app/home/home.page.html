@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Petshops - Agendamento de Tosa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="carregarPetshops()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading-container">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Carregando petshops...</p>
+  </div>
+
+  <!-- Erro -->
+  <ion-card *ngIf="error && !loading" color="danger">
+    <ion-card-content>
+      {{ error }}
+      <ion-button expand="block" (click)="carregarPetshops()" fill="outline" color="light">
+        Tentar novamente
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Lista de Petshops -->
+  <div *ngIf="!loading && !error">
+    <ion-card *ngFor="let petshop of petshops" (click)="abrirDetalhes(petshop)" button>
+      <img *ngIf="petshop.imagem" [src]="petshop.imagem" alt="{{ petshop.nome }}" />
+      
+      <ion-card-header>
+        <ion-card-title>{{ petshop.nome }}</ion-card-title>
+        <ion-card-subtitle>
+          <ion-icon name="location-outline"></ion-icon>
+          {{ petshop.endereco }}
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <!-- Avaliação -->
+        <div class="avaliacao" *ngIf="petshop.avaliacao">
+          <ion-icon 
+            *ngFor="let star of gerarEstrelas(petshop.avaliacao)"
+            [name]="star ? 'star' : 'star-outline'"
+            [color]="star ? 'warning' : 'medium'">
+          </ion-icon>
+          <span class="nota">({{ petshop.avaliacao }}.0)</span>
+        </div>
+
+        <!-- Telefone -->
+        <div class="info-item">
+          <ion-icon name="call-outline" color="primary"></ion-icon>
+          <span>{{ petshop.telefone }}</span>
+        </div>
+
+        <!-- Horários -->
+        <div class="info-item">
+          <ion-icon name="time-outline" color="primary"></ion-icon>
+          <span>{{ petshop.horariosDisponiveis.inicio }} - {{ petshop.horariosDisponiveis.fim }}</span>
+        </div>
+
+        <!-- Dias disponíveis -->
+        <div class="info-item">
+          <ion-icon name="calendar-outline" color="primary"></ion-icon>
+          <span>{{ formatarDias(petshop.diasDisponiveis) }}</span>
+        </div>
+
+        <ion-button expand="block" fill="solid" color="primary" class="btn-agendar">
+          <ion-icon name="cut-outline" slot="start"></ion-icon>
+          Agendar Tosa
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Mensagem quando não há petshops -->
+    <ion-card *ngIf="petshops.length === 0">
+      <ion-card-content class="text-center">
+        <ion-icon name="paw-outline" size="large" color="medium"></ion-icon>
+        <p>Nenhum petshop cadastrado no momento.</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
